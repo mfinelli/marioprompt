@@ -15,6 +15,9 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-pub mod cli;
-pub mod init;
-pub mod prompt;
+use std::process::ExitCode;
+
+pub fn prompt() -> ExitCode {
+    println!("prompt");
+    ExitCode::SUCCESS
+}

@@ -25,7 +25,7 @@ fn main() -> ExitCode {
 
     match &cli.command {
         Some(cli::Commands::Init {}) => return init::init(),
-        Some(cli::Commands::Prompt {}) => println!("prompt text"),
+        Some(cli::Commands::Prompt {}) => return prompt::prompt(),
         None => return welcome(),
     }
 }
