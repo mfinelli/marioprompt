@@ -15,9 +15,20 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
+use std::env;
 use std::process::ExitCode;
 
 pub fn prompt() -> ExitCode {
-    println!("prompt");
+    let cwd = env::current_dir();
+
+    match cwd {
+        Ok(cwd) => {
+            println!("{}", cwd.display());
+        }
+        Err(_) => {
+            println!("? ");
+        }
+    }
+
     ExitCode::SUCCESS
 }
