@@ -18,9 +18,6 @@
 use std::process::ExitCode;
 
 pub fn init() -> ExitCode {
-    // println!(indoc!{r#"
-    // "#});
     println!(include_str!("init.fish"));
-
     ExitCode::SUCCESS
 }

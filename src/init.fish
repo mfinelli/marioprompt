@@ -15,5 +15,5 @@
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 function fish_prompt
-    ~/bin/mp prompt
+    mp prompt
 end
