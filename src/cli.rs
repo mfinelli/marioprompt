@@ -15,18 +15,35 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-use clap::Parser;
-use marioprompt::*;
-use std::process::ExitCode;
+use clap::{Parser, Subcommand};
 
-fn main() -> ExitCode {
-    let cli = cli::Cli::parse();
+#[derive(Parser)]
+#[command(version, about, long_about = None)]
+pub struct Cli {
+    /// Turn debugging information on
+    #[arg(short = 'v', long = None)]
+    pub debug: bool,
 
-    match &cli.command {
-        Some(cli::Commands::Init {}) => println!("do the init"),
-        Some(cli::Commands::Prompt {}) => println!("prompt text"),
-        None => println!("print welcome"),
+    #[command(subcommand)]
+    pub command: Option<Commands>,
+}
+
+#[derive(Subcommand)]
+pub enum Commands {
+    /// Adds the fish_prompt functions to the fish config
+    Init {},
+
+    /// Outputs the actual prompt text
+    Prompt {},
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use clap::CommandFactory;
+
+    #[test]
+    fn verify_cli() {
+        Cli::command().debug_assert();
     }
-
-    ExitCode::SUCCESS
 }

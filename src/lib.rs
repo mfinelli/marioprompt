@@ -15,18 +15,4 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-use clap::Parser;
-use marioprompt::*;
-use std::process::ExitCode;
-
-fn main() -> ExitCode {
-    let cli = cli::Cli::parse();
-
-    match &cli.command {
-        Some(cli::Commands::Init {}) => println!("do the init"),
-        Some(cli::Commands::Prompt {}) => println!("prompt text"),
-        None => println!("print welcome"),
-    }
-
-    ExitCode::SUCCESS
-}
+pub mod cli;
