@@ -15,18 +15,13 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-use clap::Parser;
-use marioprompt::*;
+// use indoc::indoc;
 use std::process::ExitCode;
 
-fn main() -> ExitCode {
-    let cli = cli::Cli::parse();
-
-    match &cli.command {
-        Some(cli::Commands::Init {}) => return init::init(),
-        Some(cli::Commands::Prompt {}) => println!("prompt text"),
-        None => println!("print welcome"),
-    }
+pub fn init() -> ExitCode {
+    // println!(indoc!{r#"
+    // "#});
+    println!(include_str!("init.fish"));
 
     ExitCode::SUCCESS
 }

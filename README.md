@@ -10,6 +10,14 @@ and I couldn't make starship behave the same way. I've also wanted to give
 to see if I can just build my own prompt that does what I want and not what I
 don't.
 
+## usage
+
+Add the following to `~/.config/fish/config.fish`:
+
+```fish
+mp init | source
+```
+
 ## license
 
 Licensed under the GNU GPL version 3.0 or later.
