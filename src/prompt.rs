@@ -16,6 +16,7 @@
  */
 
 use std::env;
+use std::path::Path;
 use std::process::ExitCode;
 
 pub fn prompt() -> ExitCode {
@@ -23,7 +24,17 @@ pub fn prompt() -> ExitCode {
 
     match cwd {
         Ok(cwd) => {
-            println!("{}", cwd.display());
+            let home = dirs::home_dir().unwrap();
+            let dpath = if cwd.starts_with(home) {
+                let home = dirs::home_dir().unwrap();
+                let newcwd = Path::new("~");
+                let nohome = cwd.strip_prefix(home).unwrap();
+                newcwd.join(nohome)
+            } else {
+                cwd
+            };
+
+            println!("{} ", dpath.display());
         }
         Err(_) => {
             println!("? ");
