@@ -24,9 +24,9 @@ fn main() -> ExitCode {
     let cli = cli::Cli::parse();
 
     match &cli.command {
-        Some(cli::Commands::Init {}) => return init::init(),
-        Some(cli::Commands::Prompt {}) => return prompt::prompt(),
-        None => return welcome(),
+        Some(cli::Commands::Init {}) => init::init(),
+        Some(cli::Commands::Prompt {}) => prompt::prompt(),
+        None => welcome(),
     }
 }
 
